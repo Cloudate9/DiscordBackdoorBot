@@ -33,8 +33,8 @@ java -jar (path to .jar file)
 Both will have the same effect. If you see the message 
 > Checking for configuration file...
 
-you can continue on to step 5. If not, refer to [installing Java](https://www.github.com/awesomemoder316/DiscordBackdoorBotblob/main/docs/Installing-Java.md) and retry step 4.  
-5. You should be prompted to enter your Discord bot token and your server id. If you know what this is, and have it ready, you can enter it in. If not, refer to [getting my Discord bot token and server id](https://github.com/awesomemoder316/DiscordBackdoorBot/blob/main/docs/Discord-bot-token-and-server-id.md)  
+you can continue on to step 5. If not, refer to [installing Java](https://github.com/awesomemoder316/DiscordBackdoorBot/blob/master/docs/Installing-Java.md) and retry step 4.  
+5. You should be prompted to enter your Discord bot token and your server id. If you know what this is, and have it ready, you can enter it in. If not, refer to [getting my Discord bot token and server id](https://github.com/awesomemoder316/DiscordBackdoorBot/blob/master/docs/Discord-bot-token-and-server-id.md)  
 6. Your bot is almost set up! Enter the command "invite" into your command prompt/terminal in order to invite the bot to your server. Want to know the other commands? Enter the command "help".  
 7. You're done! You can shut down the bot with the command "exit". Whenever you need to do administrative tasks, you can just power on the bot but doing step 4, and do whatever you need to do!  
 
