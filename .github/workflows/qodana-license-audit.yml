@@ -1,5 +1,0 @@
-- name: Qodana - Code Inspection
-  uses: JetBrains/qodana-clone-finder-action@v2.0-eap
-  with:
-      languages: "-l Kotlin -l Java"
-
