@@ -60,7 +60,7 @@ chmod +x gradlew
 You will then be able to find the .jar file in build/libs (or build\libs if you use Windows). Continue the setup steps as per normal.
 
 ### Contributing
-If you would like to contribute to the project, please take not of 2 main things.
+If you would like to contribute to the project, please take note of 2 main things.
 * This project is written in Kotlin, and thus Kotlin contributions are preferred over Java.
 * This project uses Koin for dependency injection, and Javacord as its Discord Api. 
 
