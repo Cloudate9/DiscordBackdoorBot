@@ -12,21 +12,21 @@ Windows
 > * Navigate to ```C:\Program Files\Java```
 >   * If you see a folder that says you have Java jdk/jre 11 or higher, open the folder, and navigate to the "bin" folder.
       > You should find a file called "java.exe". Continue with the installation tutorial, but everytime you are asked to use the command "java.exe", drag and drop the java file you just located instead.
->   * If you do not see a folder that says you have Java jdk/jre 11 or higher, continue on to instructions on [downloading Java below](https://github.com/awesomedore316/tree/main/docs/installing-java.md#downloading-java)
+>   * If you do not see a folder that says you have Java jdk/jre 11 or higher, continue on to instructions on downloading Java below.
 
 macOS/Linux distros
 > * Open finder, files, dolphin, or whatever the file explorer is called on your machine.
 > * Navigate to ```/usr/lib/jvm```. 
 >   * If you see a folder that says you have Java jdk/jre 11 or higher, open the folder, and navigate to the "bin" folder. 
       > You should find a file called "java". Continue with the installation tutorial, but everytime you are asked to use the command "java", drag and drop the java file you just located instead.
->   * If you do not see a folder that says you have Java jdk/jre 11 or higher, continue on to instructions on [downloading Java below](https://github.com/awesomedore316/tree/main/docs/installing-java.md#downloading-java)
+>   * If you do not see a folder that says you have Java jdk/jre 11 or higher, continue on to instructions on downloading Java below.
 
 ### Downloading Java
-Different machines have different ways of installing Java. If you already have an outdated version of Java installed, you may need to follow the above steps again ([Checking for older java installations](https://github.com/awesomedore316/tree/main/docs/installing-java.md#checking_for_older_java_installation)).
+Different machines have different ways of installing Java. If you already have an outdated version of Java installed, you may need to follow the above steps again checking for older java installations.
 
 Windows and macOS
 > * Install Java from sites such as [AdoptOpenJdk](https://adoptopenjdk.net/) or from [Oracle](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html). You are recommended to download Java 11, or Java 17, though any versions in between would work too. Java Jdk or Jre are both fine.
->   * Download the .exe file if you are on Windows, or .dmg if you are on macOS. Run the installer, and Java will be installed. You can then re-attempt the setup steps in the [README](https://github.com/awesomemoder316/DiscordBackdoorBot/)
+>   * Download the .exe file if you are on Windows, or .dmg if you are on macOS. Run the installer, and Java will be installed. You can then re-attempt the setup steps in the [README](https://github.com/awesomemoder316/DiscordBackdoorBot#readme)
 
 
 Linux madness  
