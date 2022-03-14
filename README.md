@@ -31,9 +31,10 @@ This can be done by using curl, wget, or by simply copying and pasting the conte
 docker build -t discordbackdoorbot . --no-cache
 ```
 This can take some time depending on your machine and your internet connection. Specifically, you may see that "Gradle" may take longer than other steps.
-4. You should be prompted to enter your Discord bot token and your server id. If you know what this is, and have it ready, you can enter it in. If not, refer to [getting my Discord bot token and server id](https://github.com/awesomemoder316/DiscordBackdoorBot/blob/master/docs/Discord-bot-token-and-server-id.md)  
-5. Your bot is almost set up! Enter the command "invite" into your command prompt/terminal in order to invite the bot to your server. Want to know the other commands? Enter the command "help".  
-6. You're done! You can shut down the bot with the command "exit". Whenever you need to do administrative tasks, you can just power on the bot but doing step 4, and do whatever you need to do!  
+4. Run the bot by doing `docker run -it discordbackdoorbot`.
+5. You should be prompted to enter your Discord bot token and your server id. If you know what this is, and have it ready, you can enter it in. If not, refer to [getting my Discord bot token and server id](https://github.com/awesomemoder316/DiscordBackdoorBot/blob/master/docs/Discord-bot-token-and-server-id.md)  
+6. Your bot is almost set up! Enter the command "invite" into your command prompt/terminal in order to invite the bot to your server. Want to know the other commands? Enter the command "help".  
+7. You're done! You can shut down the bot with the command "exit". Whenever you need to do administrative tasks, you can just power on the bot but doing step 4, and do whatever you need to do!  
 
 ### Compiling from source
 If you want to compile the file from source, it is really easy to do so! Open your command prompt/terminal and enter these few commands.
