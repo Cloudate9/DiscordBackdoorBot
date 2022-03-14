@@ -4,7 +4,7 @@ plugins {
     kotlin("plugin.serialization") version "1.6.10"
 }
 
-group = "io.github.awesomemoder316.discordbackdoorbot"
+group = "io.github.cloudate9.discordbackdoorbot"
 version = "1.0.0"
 
 repositories {
@@ -13,8 +13,8 @@ repositories {
 
 dependencies {
     implementation("com.diogonunes:JColor:5.2.0")
-    implementation("io.insert-koin:koin-core:3.1.5")
-    implementation("org.javacord:javacord:3.3.2")
+    implementation("io.insert-koin:koin-core:3.2.0-beta-1")
+    implementation("org.javacord:javacord:3.4.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 }
 
@@ -28,15 +28,15 @@ tasks {
 
     shadowJar {
         archiveFileName.set(rootProject.name + "-" + rootProject.version + ".jar")
-        relocate("com.diogonunes", "io.github.discordbackdoorbot.dependencies.diogonunes")
-        relocate("org.jetbrains", "io.github.awesomemoder316.discordbackdoorbot.dependencies.jetbrains")
+        relocate("com.diogonunes", "${rootProject.group}.discordbackdoorbot.dependencies.diogonunes")
+        relocate("org.jetbrains", "${rootProject.group}.discordbackdoorbot.dependencies.jetbrains")
         //Relocating javacord causes issues. If anyone knows how to solve this, please open a pr. Thank you :D
-        relocate("org.koin", "io.github.awesomemoder316.discordbackdoorbot.dependencies.koin")
+        relocate("org.koin", "${rootProject.group}.discordbackdoorbot.dependencies.koin")
     }
 
     jar {
         manifest {
-            attributes["Main-Class"] = "io.github.awesomemoder316.discordbackdoorbot.DiscordBackdoorBotKt"
+            attributes["Main-Class"] = "${rootProject.group}.discordbackdoorbot.DiscordBackdoorBotKt"
         }
     }
 }

@@ -1,4 +1,4 @@
-package io.github.awesomemoder316.discordbackdoorbot.commands
+package io.github.cloudate9.discordbackdoorbot.commands
 
 interface IBackdoorBotCommands {
     /**

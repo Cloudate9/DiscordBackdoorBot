@@ -1,4 +1,4 @@
-package io.github.awesomemoder316.discordbackdoorbot.commands
+package io.github.cloudate9.discordbackdoorbot.commands
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
@@ -17,7 +17,7 @@ object InputUtils {
                 println(
                     colorize(
                         "Your input of \"$input\" is invalid! Please enter \"y\" for yes, or \"n\" for no.",
-                    Attribute.RED_TEXT()
+                        Attribute.RED_TEXT()
                     )
                 )
                 null
@@ -28,7 +28,8 @@ object InputUtils {
     fun inputNaturalNumberCheck(input: String?): Long? {
         if (input?.toLongOrNull() != null && input.toLong() > 0) return input.toLong()
         println(
-            colorize("Your input of \"$input\" is invalid! Please enter a natural number.",
+            colorize(
+                "Your input of \"$input\" is invalid! Please enter a natural number.",
                 Attribute.RED_TEXT()
             )
         )
@@ -59,7 +60,8 @@ object InputUtils {
     fun inputStringCheck(input: String?): String? {
         if (input == null || input == "") {
             println(
-                colorize("Your input is invalid! Please enter a valid string.",
+                colorize(
+                    "Your input is invalid! Please enter a valid string.",
                     Attribute.RED_TEXT()
                 )
             )

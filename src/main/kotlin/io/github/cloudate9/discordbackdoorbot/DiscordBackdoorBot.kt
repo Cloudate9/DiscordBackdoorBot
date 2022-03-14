@@ -1,12 +1,12 @@
-package io.github.awesomemoder316.discordbackdoorbot
+package io.github.cloudate9.discordbackdoorbot
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
-import io.github.awesomemoder316.discordbackdoorbot.commands.*
-import io.github.awesomemoder316.discordbackdoorbot.commands.sorter.CommandSorter
-import io.github.awesomemoder316.discordbackdoorbot.json.ConfigJson
-import io.github.awesomemoder316.discordbackdoorbot.koin.commandsModule
-import io.github.awesomemoder316.discordbackdoorbot.koin.discordBackdoorBotModule
+import io.github.cloudate9.discordbackdoorbot.commands.sorter.CommandSorter
+import io.github.cloudate9.discordbackdoorbot.json.ConfigJson
+import io.github.cloudate9.discordbackdoorbot.koin.commandsModule
+import io.github.cloudate9.discordbackdoorbot.koin.discordBackdoorBotModule
+import io.github.cloudate9.discordbackdoorbot.commands.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import org.javacord.api.DiscordApi
@@ -25,7 +25,7 @@ import java.util.concurrent.CompletionException
 import kotlin.io.path.*
 import kotlin.system.exitProcess
 
-class DiscordBackdoorBot: KoinComponent {
+class DiscordBackdoorBot : KoinComponent {
 
     val commandSorter by inject<CommandSorter>()
     val configPath: Path
@@ -35,7 +35,7 @@ class DiscordBackdoorBot: KoinComponent {
     lateinit var server: Server
 
 
-    companion object: KoinComponent {
+    companion object : KoinComponent {
         val discordBackdoorBot by inject<DiscordBackdoorBot>() //Retrieve a singleton instance of this class.
     }
 
@@ -63,26 +63,40 @@ class DiscordBackdoorBot: KoinComponent {
                 .login().join()
 
         } catch (ex: CompletionException) {
-            println(colorize("Discord bot token is invalid! Please correct this in your config.json!", Attribute.RED_TEXT()))
+            println(
+                colorize(
+                    "Discord bot token is invalid! Please correct this in your config.json!",
+                    Attribute.RED_TEXT()
+                )
+            )
             println(colorize("Program is now shutting down...", Attribute.RED_TEXT()))
             exitProcess(0)
         }
 
         try {
-            server = discordBotImplementation.getServerById(configDetails.serverId).get() //Will throw give error if incorrect.
+            server = discordBotImplementation.getServerById(configDetails.serverId)
+                .get() //Will throw give error if incorrect.
         } catch (ex: NoSuchElementException) {
-            println(colorize("Discord server id is invalid! Please correct this in your config.json!", Attribute.RED_TEXT()))
+            println(
+                colorize(
+                    "Discord server id is invalid! Please correct this in your config.json!",
+                    Attribute.RED_TEXT()
+                )
+            )
             println(colorize("Program is now shutting down...", Attribute.RED_TEXT()))
             exitProcess(0)
         }
 
         println(
-            colorize("Beep beep! \"${
-            discordBotImplementation.yourself.name
-        }\" has been successfully started in the server \"${
-            server.name
-        }\".",
-            Attribute.GREEN_TEXT()))
+            colorize(
+                "Beep beep! \"${
+                    discordBotImplementation.yourself.name
+                }\" has been successfully started in the server \"${
+                    server.name
+                }\".",
+                Attribute.GREEN_TEXT()
+            )
+        )
     }
 
     /**
@@ -103,8 +117,11 @@ class DiscordBackdoorBot: KoinComponent {
             true
         } catch (ex: IOException) {
             println(
-                colorize("Config file is unable to be copied! Please move DiscordBackdoorBot.jar to another location," +
-                    " where administrator/root access is not needed to create files.", Attribute.RED_TEXT()))
+                colorize(
+                    "Config file is unable to be copied! Please move DiscordBackdoorBot.jar to another location," +
+                            " where administrator/root access is not needed to create files.", Attribute.RED_TEXT()
+                )
+            )
             false
         }
     }
@@ -116,8 +133,12 @@ class DiscordBackdoorBot: KoinComponent {
         val inputStream = this.javaClass.classLoader.getResourceAsStream("config.json")
 
         if (inputStream == null) {//Shouldn't happen
-            println(colorize("Error! Configuration file copying failed. Please open an issue on Github.",
-                Attribute.RED_TEXT()))
+            println(
+                colorize(
+                    "Error! Configuration file copying failed. Please open an issue on Github.",
+                    Attribute.RED_TEXT()
+                )
+            )
             return null
         }
 
@@ -128,9 +149,17 @@ class DiscordBackdoorBot: KoinComponent {
      * Register all terminal commands.
      */
     fun registerCommands() {
-        commandSorter.registerCommand("createrole", get<CreateRoleCommand>(), listOf("add", "addrole", "create", "newrole"))
+        commandSorter.registerCommand(
+            "createrole",
+            get<CreateRoleCommand>(),
+            listOf("add", "addrole", "create", "newrole")
+        )
         commandSorter.registerCommand("deleterole", get<DeleteRoleCommand>(), listOf("delete", "remove", "removerole"))
-        commandSorter.registerCommand("giverole", get<GiveRoleCommand>(), listOf("assign", "assignrole", "give", "promote", "promoterole"))
+        commandSorter.registerCommand(
+            "giverole",
+            get<GiveRoleCommand>(),
+            listOf("assign", "assignrole", "give", "promote", "promoterole")
+        )
         commandSorter.registerCommand("help", get<HelpCommand>())
         commandSorter.registerCommand("invite", get<InviteCommand>(), listOf("link"))
         commandSorter.registerCommand("listroles", get<ListServerRolesCommand>(), listOf("list", "roles"))
@@ -143,8 +172,12 @@ class DiscordBackdoorBot: KoinComponent {
      * Ask a user for the name of a role. Used by promptUserForExistingServerRole()
      */
     private fun promptRoleName(): String {
-        println(colorize("Enter the role name you want to use for this operation. Roles are case sensitive.",
-        Attribute.CYAN_TEXT()))
+        println(
+            colorize(
+                "Enter the role name you want to use for this operation. Roles are case sensitive.",
+                Attribute.CYAN_TEXT()
+            )
+        )
         print("> ")
         return InputUtils.inputStringCheck(readLine()) ?: return promptRoleName()
     }
@@ -159,36 +192,41 @@ class DiscordBackdoorBot: KoinComponent {
         val rolesIndicated = discordBackdoorBot.server.getRolesByName(roleName)
 
         if (rolesIndicated.isEmpty()) {
-            println(colorize("The role you indicated does not exist! Cancelling operation...",
-                Attribute.RED_TEXT()))
+            println(
+                colorize(
+                    "The role you indicated does not exist! Cancelling operation...",
+                    Attribute.RED_TEXT()
+                )
+            )
             return null
         }
 
-            return if (rolesIndicated.size == 1) rolesIndicated[0]
-            else {
-                println(
-                    colorize("There are more than 1 role that share the indicated name! " +
-                        "Please select the appropriate role from the list below, " +
-                        "and enter the number of the role.", Attribute.CYAN_TEXT()
-                    )
+        return if (rolesIndicated.size == 1) rolesIndicated[0]
+        else {
+            println(
+                colorize(
+                    "There are more than 1 role that share the indicated name! " +
+                            "Please select the appropriate role from the list below, " +
+                            "and enter the number of the role.", Attribute.CYAN_TEXT()
                 )
+            )
 
-                for ((index, role) in rolesIndicated.withIndex()) {
-                    println("${index + 1}. $role")
-                }
-
-                println(colorize("Indicate the number of the role you want to select.", Attribute.CYAN_TEXT()))
-                print("> ")
-                val selectedNumber = InputUtils.inputNaturalNumberCheck(readLine())
-
-                if (selectedNumber == null || selectedNumber - 1 > rolesIndicated.size) {
-                    //No need to check if natural number is less than that of map. Will never happen.
-                    println("The number indicated does not map to any of the above options. Cancelling operation...")
-                    return null
-                }
-
-                rolesIndicated[selectedNumber.toInt() - 1]
+            for ((index, role) in rolesIndicated.withIndex()) {
+                println("${index + 1}. $role")
             }
+
+            println(colorize("Indicate the number of the role you want to select.", Attribute.CYAN_TEXT()))
+            print("> ")
+            val selectedNumber = InputUtils.inputNaturalNumberCheck(readLine())
+
+            if (selectedNumber == null || selectedNumber - 1 > rolesIndicated.size) {
+                //No need to check if natural number is less than that of map. Will never happen.
+                println("The number indicated does not map to any of the above options. Cancelling operation...")
+                return null
+            }
+
+            rolesIndicated[selectedNumber.toInt() - 1]
+        }
     }
 
     /**
@@ -197,8 +235,8 @@ class DiscordBackdoorBot: KoinComponent {
     fun setupConfig(): Boolean {
         println(
             colorize(
-            "Configuration file does not exist! Automatically copying default configuration file...",
-        Attribute.CYAN_TEXT()
+                "Configuration file does not exist! Automatically copying default configuration file...",
+                Attribute.CYAN_TEXT()
             )
         )
         Thread.sleep(1000)
@@ -208,13 +246,11 @@ class DiscordBackdoorBot: KoinComponent {
         if (!success) {
             println(colorize("Discord Backdoor Bot in now shutting down...", Attribute.RED_TEXT()))
             return false
-        }
-
-        else {
+        } else {
             println(
                 colorize(
                     "Configuration successfully copied! The config.json can be found at ${configPath.parent.toAbsolutePath()}.",
-                Attribute.GREEN_TEXT()
+                    Attribute.GREEN_TEXT()
                 )
             )
 

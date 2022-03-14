@@ -1,4 +1,4 @@
-package io.github.awesomemoder316.discordbackdoorbot.json
+package io.github.cloudate9.discordbackdoorbot.json
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json

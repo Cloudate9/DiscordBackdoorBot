@@ -1,10 +1,10 @@
-package io.github.awesomemoder316.discordbackdoorbot.commands
+package io.github.cloudate9.discordbackdoorbot.commands
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
-import io.github.awesomemoder316.discordbackdoorbot.DiscordBackdoorBot
+import io.github.cloudate9.discordbackdoorbot.DiscordBackdoorBot
 
-class DeleteRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBackdoorBotCommands {
+class DeleteRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot) : IBackdoorBotCommands {
 
     /**
      * Unlike CreateRoleCommand where the user is prompted to re-input when an input is invalid,
@@ -31,8 +31,12 @@ class DeleteRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
      * Promts if the user does indeed want to delete the selected role.
      */
     private fun confirmDeletion(roleName: String): Boolean {
-        println(colorize("Please confirm that you want to delete the role \"$roleName\" (Y/N): ",
-            Attribute.CYAN_TEXT()))
+        println(
+            colorize(
+                "Please confirm that you want to delete the role \"$roleName\" (Y/N): ",
+                Attribute.CYAN_TEXT()
+            )
+        )
         print("> ")
         return InputUtils.inputBooleanCheck(readLine()) ?: confirmDeletion(roleName)
     }

@@ -1,10 +1,10 @@
-package io.github.awesomemoder316.discordbackdoorbot.commands
+package io.github.cloudate9.discordbackdoorbot.commands
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
-import io.github.awesomemoder316.discordbackdoorbot.DiscordBackdoorBot
+import io.github.cloudate9.discordbackdoorbot.DiscordBackdoorBot
 
-class ListServerRolesCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBackdoorBotCommands {
+class ListServerRolesCommand(private val discordBackdoorBot: DiscordBackdoorBot) : IBackdoorBotCommands {
 
     override fun onCommand() {
         println(colorize("Operation: List all roles in the server.", Attribute.CYAN_TEXT()))

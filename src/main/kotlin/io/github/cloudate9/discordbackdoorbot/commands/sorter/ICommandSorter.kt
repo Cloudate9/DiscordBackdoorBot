@@ -1,6 +1,6 @@
-package io.github.awesomemoder316.discordbackdoorbot.commands.sorter
+package io.github.cloudate9.discordbackdoorbot.commands.sorter
 
-import io.github.awesomemoder316.discordbackdoorbot.commands.IBackdoorBotCommands
+import io.github.cloudate9.discordbackdoorbot.commands.IBackdoorBotCommands
 
 interface ICommandSorter {
     /**
