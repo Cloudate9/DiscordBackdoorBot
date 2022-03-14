@@ -21,31 +21,25 @@ This bot would allow only you to have those permissions through the bot, while t
 ### Setting up the bot
 
 It is recommended that you use Docker for less hassle. Manual mode **IS** found to have issues on Windows.
+As such, I will only be providing instructions for Docker.
 
-1. Create a directory for the Bot on your computer. Anywhere that you can remember should be fine, for example your Desktop or Downloads directory
-2. Download the latest .jar file from [releases](https://www.github.com/cloudate9/DiscordBackdoorBot/releases), or [compile the .jar from source](https://www.github.com/awesomemoder316/DiscordBackdoorBot#compiling-from-source).
-3. Open the command prompt (Windows 10) or the terminal (Windows 11, macOS, Linux distros). All commands for this bot will be run from your command prompt/terminal.
-4. Try to run the .jar file. **DO NOT** double-click on the file. Nothing will happen. Instead, enter the following command in your command prompt/terminal.  
+1. Install Docker. This can be done by going to [Docker's download page](https://docs.docker.com/get-docker/)
+2. Obtain the [Dockerfile](https://raw.githubusercontent.com/Cloudate9/discordbackdoorbot/master/Dockerfile) of this project.
+This can be done by using curl, wget, or by simply copying and pasting the contents of that page into a file called "Dockerfile"
+3. Open a terminal/command prompt in the directory where you have the Dockerfile, and proceed to do the command 
+``` 
+docker build -t discordbackdoorbot . --no-cache
 ```
-java -jar (drag and drop .jar file to command prompt/terminal)
-```
-**OR**
-```
-java -jar (path to .jar file)
-```
-Both will have the same effect. If you see the message 
-> Checking for configuration file...
-
-you can continue on to step 5. If not, refer to [installing Java](https://github.com/cloudate9/DiscordBackdoorBot/blob/master/docs/Installing-Java.md) and retry step 4.  
-5. You should be prompted to enter your Discord bot token and your server id. If you know what this is, and have it ready, you can enter it in. If not, refer to [getting my Discord bot token and server id](https://github.com/awesomemoder316/DiscordBackdoorBot/blob/master/docs/Discord-bot-token-and-server-id.md)  
-6. Your bot is almost set up! Enter the command "invite" into your command prompt/terminal in order to invite the bot to your server. Want to know the other commands? Enter the command "help".  
-7. You're done! You can shut down the bot with the command "exit". Whenever you need to do administrative tasks, you can just power on the bot but doing step 4, and do whatever you need to do!  
+This can take some time depending on your machine and your internet connection. Specifically, you may see that "Gradle" may take longer than other steps.
+4. You should be prompted to enter your Discord bot token and your server id. If you know what this is, and have it ready, you can enter it in. If not, refer to [getting my Discord bot token and server id](https://github.com/awesomemoder316/DiscordBackdoorBot/blob/master/docs/Discord-bot-token-and-server-id.md)  
+5. Your bot is almost set up! Enter the command "invite" into your command prompt/terminal in order to invite the bot to your server. Want to know the other commands? Enter the command "help".  
+6. You're done! You can shut down the bot with the command "exit". Whenever you need to do administrative tasks, you can just power on the bot but doing step 4, and do whatever you need to do!  
 
 ### Compiling from source
 If you want to compile the file from source, it is really easy to do so! Open your command prompt/terminal and enter these few commands.
 
 ```
-git clone https://www.github.com/awesomemoder316/DiscordBackdoorBot
+git clone https://www.github.com/Cloudate9/DiscordBackdoorBot
 cd DiscordBackdoorBot
 ```
 
@@ -73,6 +67,6 @@ If you do not enough experience to be confident in contributing, but still want 
 In the unlikely event that something bad occurs, I hope that this bot was of help! 
 
 Like this project? Consider starring it! 
-Love this project? Consider donating on my [PayPal](http://paypal.me/awesomemoder316) or on my [Liberapay](https://liberapay.com/awesomemoder316). Tell me if you donate, and I'll add your name here!
+Love this project? Consider donating on my [Ko-fi](https://ko-fi.com/cloudate9).
 
 This project is licensed under the GNU-GPLv3. You can learn more about it [here](https://choosealicense.com/licenses/gpl-3.0/)
