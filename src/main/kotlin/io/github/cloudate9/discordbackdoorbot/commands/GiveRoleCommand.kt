@@ -1,10 +1,10 @@
-package io.github.awesomemoder316.discordbackdoorbot.commands
+package io.github.cloudate9.discordbackdoorbot.commands
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
-import io.github.awesomemoder316.discordbackdoorbot.DiscordBackdoorBot
+import io.github.cloudate9.discordbackdoorbot.DiscordBackdoorBot
 
-class GiveRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBackdoorBotCommands {
+class GiveRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot) : IBackdoorBotCommands {
 
     override fun onCommand() {
 
@@ -17,8 +17,8 @@ class GiveRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBack
         if (user == null) {
             println(
                 colorize(
-                "The user with the id \"$userId\" does not exist in this server! Cancelling giving of role...",
-                Attribute.RED_TEXT()
+                    "The user with the id \"$userId\" does not exist in this server! Cancelling giving of role...",
+                    Attribute.RED_TEXT()
                 )
             )
             return

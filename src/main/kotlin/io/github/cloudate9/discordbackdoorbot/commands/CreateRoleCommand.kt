@@ -1,13 +1,13 @@
-package io.github.awesomemoder316.discordbackdoorbot.commands
+package io.github.cloudate9.discordbackdoorbot.commands
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
-import io.github.awesomemoder316.discordbackdoorbot.DiscordBackdoorBot
+import io.github.cloudate9.discordbackdoorbot.DiscordBackdoorBot
 import org.javacord.api.entity.permission.Permissions
 import org.javacord.api.entity.permission.Role
 import org.javacord.api.entity.permission.RoleBuilder
 
-class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBackdoorBotCommands {
+class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot) : IBackdoorBotCommands {
 
 
     override fun onCommand() {
@@ -18,11 +18,11 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
         val permissionNumber = promptPermissionNumber()
 
         val confirmCreation = confirmCreation(
-                roleName,
-                displaySeparately,
-                mentionableByOtherRoles,
-                permissionNumber
-            )
+            roleName,
+            displaySeparately,
+            mentionableByOtherRoles,
+            permissionNumber
+        )
 
         if (!confirmCreation) {
             println(colorize("Role creation terminated.", Attribute.RED_TEXT()))
@@ -34,7 +34,7 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
             .setDisplaySeparately(displaySeparately)
             .setMentionable(mentionableByOtherRoles)
             .setName(roleName)
-            .setPermissions(Permissions.fromBitmask(permissionNumber))
+            .setPermissions(Permissions.fromBitmask(permissionNumber.toLong()))
             .create()
             .get()
 
@@ -54,7 +54,7 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
                 val newRoleName = duplicateFound(originalRoleName)
 
                 //New name given. Check if name is a duplicate.
-                if (originalRoleName != originalRoleName) return checkDuplicateRoleName(originalRoleName, roles)
+                if (newRoleName == originalRoleName) return checkDuplicateRoleName(originalRoleName, roles)
 
                 return newRoleName
             }
@@ -65,15 +65,19 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
     /**
      * Prompt for confirmation of bot creation.
      */
-    private fun confirmCreation(roleName: String, displaySeparately: Boolean,
-                                mentionableByOtherRoles: Boolean, permissionNumber: Int):Boolean {
+    private fun confirmCreation(
+        roleName: String, displaySeparately: Boolean,
+        mentionableByOtherRoles: Boolean, permissionNumber: Int
+    ): Boolean {
         println(
-            colorize("Please confirm that you want to create a role with the following specification (Y/N): \n" +
-                "Role name: $roleName\n" +
-                "Display separately from other roles: $displaySeparately\n" +
-                "Mentionable by other roles: $mentionableByOtherRoles\n" +
-                "Permission number for the role: $permissionNumber",
-                Attribute.CYAN_TEXT())
+            colorize(
+                "Please confirm that you want to create a role with the following specification (Y/N): \n" +
+                        "Role name: $roleName\n" +
+                        "Display separately from other roles: $displaySeparately\n" +
+                        "Mentionable by other roles: $mentionableByOtherRoles\n" +
+                        "Permission number for the role: $permissionNumber",
+                Attribute.CYAN_TEXT()
+            )
         )
 
         print("> ")
@@ -88,9 +92,10 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
      */
     private fun duplicateFound(originalName: String): String? {
         println(
-            colorize("Another role with the same name has been found!\n" +
-                "It is strongly recommended that you change the name of the role (ChangeName/CancelCreation/Ignore):",
-            Attribute.RED_TEXT()
+            colorize(
+                "Another role with the same name has been found!\n" +
+                        "It is strongly recommended that you change the name of the role (ChangeName/CancelCreation/Ignore):",
+                Attribute.RED_TEXT()
             )
         )
         print("> ")
@@ -101,7 +106,7 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
             "changename", "change", "name" -> {
 
                 val newName = InputUtils.inputStringCheck(readLine()) ?: return duplicateFound(originalName)
-                
+
                 println(colorize("Role name set to $newName.", Attribute.GREEN_TEXT()))
                 newName.lowercase()
             }
@@ -120,8 +125,8 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
                 println(
                     colorize(
                         "Your input of \"$optionChosen\" is invalid! Please enter \"changeName\" to change the name of the role," +
-                        "\"cancelCreation\" to cancel the creation of the role, or \"ignore\" to continue with the duplicate role name.",
-                    Attribute.RED_TEXT()
+                                "\"cancelCreation\" to cancel the creation of the role, or \"ignore\" to continue with the duplicate role name.",
+                        Attribute.RED_TEXT()
                     )
                 )
 
@@ -135,7 +140,12 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
      * @return True if true, or false if false.
      */
     private fun promptDisplaySeparately(): Boolean {
-        println(colorize("Enter if you want the role to be displayed separately from other roles (Y/N):", Attribute.CYAN_TEXT()))
+        println(
+            colorize(
+                "Enter if you want the role to be displayed separately from other roles (Y/N):",
+                Attribute.CYAN_TEXT()
+            )
+        )
         print("> ")
 
         return InputUtils.inputBooleanCheck(readLine()) ?: promptDisplaySeparately()
@@ -158,9 +168,10 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
      */
     private fun promptPermissionNumber(): Int {
         println(
-            colorize("Permissions are assigned based on a discord number thing. 8 means administrator. " +
-                "Refer to here to get the permission number suitable for you: " +
-                "https://discordapi.com/permissions.html#0",
+            colorize(
+                "Permissions are assigned based on a discord number thing. 8 means administrator. " +
+                        "Refer to here to get the permission number suitable for you: " +
+                        "https://discordapi.com/permissions.html#0",
                 Attribute.CYAN_TEXT()
             )
         )
@@ -170,7 +181,7 @@ class CreateRoleCommand(private val discordBackdoorBot: DiscordBackdoorBot): IBa
     }
 
     /**
-     * Prompts what the role nome should be. 
+     * Prompts what the role nome should be.
      * @return The role name.
      */
     private fun promptRoleName(): String? {
