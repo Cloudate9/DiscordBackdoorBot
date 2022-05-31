@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.diogonunes:JColor:5.5.0")
+    implementation("com.diogonunes:JColor:5.5.1")
     implementation("io.insert-koin:koin-core:3.2.0")
     implementation("org.javacord:javacord:3.4.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
